@@ -1,6 +1,7 @@
 .optionsContainer {
     display: flex;
     gap: 10px;
+    margin-bottom: 25px;
 }
 
 .optionsBtn {
