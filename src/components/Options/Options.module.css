@@ -1,0 +1,10 @@
+.optionsContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.optionsBtn {
+    font-size: 24px;
+    padding: 7px 12px;
+    border-radius: 5px;    
+}
