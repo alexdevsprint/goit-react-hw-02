@@ -14,16 +14,28 @@ function App() {
     bad: 0,
   });
 
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const PositiveFeedback = Math.round((feedback.good / totalFeedback) * 100)
+
   const updateFeedback = (feedbackType) => {
     setFeedback({ ...feedback, [feedbackType]: feedback[feedbackType] + 1 });
   };
+  const resetFeedback = () => {
+    setFeedback(
+      {
+        good: 0,
+        neutral: 0,
+        bad: 0,
+      }
+    );
+  }
 
   return (
     <div className={css.container}>
       <Description />
-      <Options feedback={feedback} updateFeedback={updateFeedback} />
+      <Options feedback={feedback} updateFeedback={updateFeedback} resetFeedback={resetFeedback}/>
       {feedback.good > 0 || feedback.neutral > 0 || feedback.bad > 0 ? (
-        <Feedback feedback={feedback} />
+        <Feedback feedback={feedback} totalFeedback={totalFeedback} PositiveFeedback={PositiveFeedback}/>
       ) : (
         <Notification />
       )}

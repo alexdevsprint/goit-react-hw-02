@@ -1,5 +1,5 @@
 import css from "./Options.module.css";
-function Options({ feedback, updateFeedback }) {
+function Options({ feedback, updateFeedback, resetFeedback}) {
   return (
     <div className={css.optionsContainer}>
       <button
@@ -25,7 +25,7 @@ function Options({ feedback, updateFeedback }) {
       </button>
 
       {(feedback.good > 0 || feedback.neutral > 0 || feedback.bad > 0) && (
-          <button className={css.optionsBtn} type="button">
+          <button className={css.optionsBtn} onClick={() => resetFeedback()} type="button">
             Reset
           </button>
         )}
