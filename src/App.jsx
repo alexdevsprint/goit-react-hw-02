@@ -4,28 +4,27 @@ import Description from "./components/Description/Description";
 import Options from "./components/Options/Options";
 import Feedback from "./components/Feedback/Feedback";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 function App() {
-  const [ clicks, setClicks ] = useState({
+  const [feedback, setFeedback] = useState({
     good: 0,
     neutral: 0,
-    bad: 0
+    bad: 0,
   });
 
-  const updateFeedback = feedbackType => {
+  const updateFeedback = (feedbackType) => {
     // Тут використовуй сеттер, щоб оновити стан
-    console.log(feedbackType)
-    setClicks ({...clicks, 
-      [feedbackType]: clicks[feedbackType] + 1,
-  });
-   }
+
+    setFeedback({ ...feedback, [feedbackType]: feedback[feedbackType] + 1 });
+    console.log(feedback);
+  };
 
   return (
     <div className={css.container}>
       <Description />
-      <Options onUpdate={updateFeedback}/>
-      <Feedback />
+      <Options updateFeedback={updateFeedback} />
+      <Feedback feedback={feedback} />
     </div>
   );
 }
